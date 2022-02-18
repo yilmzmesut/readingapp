@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "53fc97f4-c61f-41c2-b47e-2ad65ca59f9f",
+		"name": "GETIR - CASE STUDY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"yilmzmesut@gmail.com\",\n  \"name\": \"Mesut\",\n  \"password\": \"12345\",\n  \"surname\": \"Yılmaz\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/customer/signUp"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"yilmzmesut@gmail.com\",\n  \"password\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/customer/signIn"
+			},
+			"response": []
+		},
+		{
+			"name": "Query All Customer Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/orders?customerId=1&page=0&size=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "customerId",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"barcode\": \"EASD123ASD123123\",\n  \"name\": \"JAVA fe\",\n  \"price\": 3.232,\n  \"stock\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/book/"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookId\": 2,\n  \"stock\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/book/stock"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"books\": [\n    {\n      \"bookId\": 0,\n      \"quantity\": 0\n    }\n  ],\n  \"customerId\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/order/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/order/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Query Order By Date Interval",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"createDate\": \"2022-02-15\",\n  \"modifyDate\": \"2022-02-17\",\n  \"page\": 0,\n  \"size\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/order/search"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Order Count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/statics/order-count"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Amount of All Purchased Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/statics/purchased-order-amount"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Count of Purchased Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{GETIR_TOKEN}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/statics/purchased-order-count"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "GETIR_TOKEN",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5aWxtem1lc3V0QGdtYWlsLmNvbSIsImlhdCI6MTY0NTAyODY4NCwiZXhwIjoxNjQ1MTE1MDg0fQ.P-_b2_fROqcARd4GQsDqQw_TfAm7X2y98mLqM3ggfDuB7pc-XbB2MPaJQY2Q4Ljd2_sYB5Iq-rHORIWLy-6O8w"
+		}
+	]
+}
